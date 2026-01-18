@@ -89,6 +89,8 @@ export default function CallForm() {
       `${protocol}://${BASE_URL}/ws/audio-call?callId=${callId}`
     );
 
+    console.log("WebSocket URL:", `${protocol}://${BASE_URL}/ws/audio-call?callId=${callId}`);
+
     wsRef.current = ws;
 
     ws.onopen = () => {
