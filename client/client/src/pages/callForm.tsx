@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import {
   Phone,
   User,
@@ -81,7 +82,7 @@ export default function CallForm() {
     if (wsRef.current) return;
 
     audioUnlockedRef.current = true;
-    const callId = crypto.randomUUID();
+    const callId = uuidv4();
     const ws = new WebSocket(
       `ws://${BASE_URL}/ws/audio-call?callId=${callId}`
     );
