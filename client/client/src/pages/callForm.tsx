@@ -13,6 +13,8 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL || "localhost:4000";
+
 export default function CallForm() {
   const wsRef = useRef<WebSocket | null>(null);
   const audioUnlockedRef = useRef(false);
@@ -81,7 +83,7 @@ export default function CallForm() {
     audioUnlockedRef.current = true;
     const callId = crypto.randomUUID();
     const ws = new WebSocket(
-      `ws://localhost:4000/ws/audio-call?callId=${callId}`
+      `ws://${BASE_URL}/ws/audio-call?callId=${callId}`
     );
     wsRef.current = ws;
 
