@@ -83,9 +83,12 @@ export default function CallForm() {
 
     audioUnlockedRef.current = true;
     const callId = uuidv4();
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+
     const ws = new WebSocket(
-      `ws://${BASE_URL}/ws/audio-call?callId=${callId}`
+      `${protocol}://${BASE_URL}/ws/audio-call?callId=${callId}`
     );
+
     wsRef.current = ws;
 
     ws.onopen = () => {
@@ -295,7 +298,7 @@ export default function CallForm() {
             onClick={cleanup}
             disabled={!isCallActive}
             className="bg-gradient-to-r from-red-800 to-red-600 hover:from-red-800 hover:to-red-500 py-4 rounded-xl text-lg font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
-          
+
           >
             <PhoneOff className="w-5 h-5" />
             End Call
