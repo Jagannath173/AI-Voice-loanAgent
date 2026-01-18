@@ -16,6 +16,8 @@ export default function WebRTCTest() {
     pcRef.current = pc;
 
     const ws = new WebSocket("ws://localhost:4000/ws/webrtc");
+    console.log("");
+    
     wsRef.current = ws;
 
     // 🎤 MIC
